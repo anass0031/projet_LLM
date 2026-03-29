@@ -21,7 +21,7 @@ drug_dataset = load_dataset(
 
 
 # =========================
-# 3. REDUCE SIZE (IMPORTANT)
+# 3. REDUCE SIZE
 # =========================
 # med_dataset = med_dataset.select(range(10000))
 # drug_dataset = drug_dataset.select(range(10000))
