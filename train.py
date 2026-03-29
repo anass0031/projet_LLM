@@ -17,7 +17,7 @@ print("Using device:", device)
 # =========================
 dataset = load_dataset(
     "json",
-    data_files="dataset/medical_dataset1.jsonl"
+    data_files="medical_dataset.jsonl"
 )["train"]
 
 # shuffle 
