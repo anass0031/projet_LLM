@@ -6,7 +6,6 @@ import evaluate
 
 model_id = "google/gemma-3-1b-it"
 adapter_path = "./gemma_lora_model"
-dataset_path = "medical_dataset"
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 print(f"Loading model and test data using {device}...")
@@ -14,10 +13,9 @@ tokenizer = AutoTokenizer.from_pretrained(adapter_path)
 base_model = AutoModelForCausalLM.from_pretrained(model_id, dtype=torch.float16, device_map="auto")
 model = PeftModel.from_pretrained(base_model, adapter_path).to(device)
 
-# dataset = load_from_disk(dataset_path)
 dataset = load_dataset(
     "json",
-    data_files="dataset/medical_dataset.jsonl"
+    data_files="medical_dataset.jsonl"
 )["train"]
 test_data = dataset.select(range(min(100, len(dataset)))) 
 
